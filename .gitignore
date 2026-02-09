@@ -1,0 +1,6 @@
+.env
+.DS_Store
+*.db
+*.db-journal
+denokv/
+config.yaml

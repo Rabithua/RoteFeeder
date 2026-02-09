@@ -1,0 +1,7 @@
+services:
+  rote-feeder:
+    image: ghcr.io/rabithua/rotefeeder:latest
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./denokv:/app/denokv
+    restart: unless-stopped

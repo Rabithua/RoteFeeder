@@ -1,0 +1,7 @@
+services:
+  rote-feeder:
+    build: .
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./denokv:/app/denokv
+    restart: unless-stopped

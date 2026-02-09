@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "start": "deno run --unstable-cron --allow-net --allow-read --allow-env --allow-write --unstable-kv src/main.ts",
+    "dev": "deno run --watch --unstable-cron --allow-net --allow-read --allow-env --allow-write --unstable-kv src/main.ts",
+    "test": "deno test --allow-read --allow-env --unstable-kv"
+  },
+  "imports": {
+    "@std/yaml": "jsr:@std/yaml@^0.224.0",
+    "@std/log": "jsr:@std/log@^0.224.0",
+    "hono": "jsr:@hono/hono@^4.0.0",
+    "xml": "https://deno.land/x/xml@2.1.3/mod.ts"
+  }
+}

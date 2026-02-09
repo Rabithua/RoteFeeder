@@ -1,0 +1,14 @@
+rote:
+  api_base: "https://your-rote-instance.com"
+  openkey: "your_openkey_here"
+  append_source_tag: true
+  default_tags: ["RoteFeeder", "RSS"]
+
+scheduler:
+  cron: "0 * * * *" # Every hour
+
+feeds:
+  - name: "Hacker News"
+    url: "https://hnrss.org/newest?points=100"
+  - name: "Deno Blog"
+    url: "https://deno.com/feed"
