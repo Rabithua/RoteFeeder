@@ -1,14 +1,19 @@
 rote:
-  api_base: "https://your-rote-instance.com"
-  openkey: "your_openkey_here"
-  append_source_tag: true
-  default_tags: ["RoteFeeder", "RSS"]
+  api_base: "https://demoapi.rote.ink"
+  openkey: "4637f328-b116-435e-b5b3-8dec9f81e74d"
+  append_source_tag: true # Append feed name as tag
+  default_tags: ["RoteFeeder", "RSS"] # Default tags for all notes
+  state: "public" # "public" or "private"
 
 scheduler:
-  cron: "0 * * * *" # Every hour
+  cron: "*/10 * * * *" # Every 10 minutes
 
 feeds:
   - name: "Hacker News"
     url: "https://hnrss.org/newest?points=100"
-  - name: "Deno Blog"
-    url: "https://deno.com/feed"
+  - name: "Design Fragments"
+    url: "https://df.fenx.work/rss/all"
+  - name: "Fatbobman's Blog"
+    url: "https://fatbobman.com/rss.xml"
+  - name: "月球背面"
+    url: "https://moonvy.com/blog/rss.xml"

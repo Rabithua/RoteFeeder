@@ -52,6 +52,14 @@ export async function pushToRote(
     tags: validTags,
     source: item.link,
     type: "rote",
+    ...(config.state !== undefined && {
+      state:
+        config.state === "public"
+          ? 1
+          : config.state === "private"
+            ? 0
+            : config.state,
+    }),
   };
 
   try {

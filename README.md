@@ -18,6 +18,7 @@ A Deno-based service that periodically fetches RSS feeds and forwards them to Ro
     rote:
       api_base: "https://api.rote.app"
       openkey: "your_openkey_here"
+      state: "public" # Optional: "public" or "private" (default: private/archived depending on system)
 
     feeds:
       - name: "Hacker News"

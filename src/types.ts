@@ -3,6 +3,7 @@ export interface RoteConfig {
   openkey: string;
   append_source_tag?: boolean;
   default_tags?: string[];
+  state?: "public" | "private" | number;
 }
 
 export interface FeedConfig {
