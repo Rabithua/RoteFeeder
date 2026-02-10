@@ -21,15 +21,15 @@ RoteFeeder supports two configuration methods:
 
 Supports configuration using Docker Compose environment variables. Here are the available environment variables:
 
-| Environment Variable    | Description                          | Default Value         |
-|------------------------|--------------------------------------|-----------------------|
-| ROTE_API_BASE          | Rote API Base URL                    | -                     |
-| ROTE_OPENKEY           | Rote OpenKey                         | -                     |
-| ROTE_STATE             | Note state ("public" or "private")   | "public"              |
-| ROTE_APPEND_SOURCE_TAG | Whether to append source tag         | true                  |
-| ROTE_DEFAULT_TAGS      | Default tags (JSON array)            | ["RoteFeeder", "RSS"] |
-| ROTE_FEEDS             | Feed list (JSON array)               | -                     |
-| ROTE_CRON              | Scheduled task expression (Cron)     | -                     |
+| Environment Variable   | Description                        | Default Value         |
+| ---------------------- | ---------------------------------- | --------------------- |
+| ROTE_API_BASE          | Rote API Base URL                  | -                     |
+| ROTE_OPENKEY           | Rote OpenKey                       | -                     |
+| ROTE_STATE             | Note state ("public" or "private") | "public"              |
+| ROTE_APPEND_SOURCE_TAG | Whether to append source tag       | true                  |
+| ROTE_DEFAULT_TAGS      | Default tags (JSON array)          | ["RoteFeeder", "RSS"] |
+| ROTE_FEEDS             | Feed list (JSON array)             | -                     |
+| ROTE_CRON              | Scheduled task expression (Cron)   | -                     |
 
 **Optimized Configuration**: Now supports using YAML native syntax for arrays and objects, avoiding JSON string escaping issues, making configuration more elegant and readable.
 
@@ -56,7 +56,7 @@ services:
           url: "https://df.fenx.work/rss/all"
         - name: "Fatbobman's Blog"
           url: "https://fatbobman.com/rss.xml"
-        - name: "Moon Back"
+        - name: "月球背面"
           url: "https://moonvy.com/blog/rss.xml"
       ROTE_CRON: "*/10 * * * *"
     volumes:
