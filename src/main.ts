@@ -4,10 +4,15 @@ import { isSeen, markSeen } from "./core/dedupe.ts";
 import { pushToRote } from "./core/rote.ts";
 import * as log from "@std/log";
 
-// Setup logging
+// Setup logging with timestamp
+const formatter = (record: log.LogRecord) => {
+  const timestamp = new Date().toISOString().replace("T", " ").replace("Z", "");
+  return `[${timestamp}] [${record.levelName}] ${record.msg}`;
+};
+
 log.setup({
   handlers: {
-    console: new log.ConsoleHandler("INFO"),
+    console: new log.ConsoleHandler("INFO", { formatter }),
   },
   loggers: {
     default: {
@@ -20,6 +25,22 @@ log.setup({
 async function runSync() {
   log.info("Starting sync run...");
   const config = await loadConfig();
+
+  // Print detailed configuration info
+  log.info(`=== Configuration ===`);
+  log.info(`API Base: ${config.rote.api_base}`);
+  log.info(`OpenKey: ${config.rote.openkey.slice(0, 8)}...`); // Masked for security
+  log.info(`State: ${config.rote.state || "default"}`);
+  log.info(`Append Source Tag: ${config.rote.append_source_tag}`);
+  log.info(
+    `Default Tags: ${JSON.stringify(config.rote.default_tags || ["RoteFeeder", "RSS"])}`,
+  );
+  log.info(`Feeds Count: ${config.feeds.length}`);
+  log.info(`Feeds: ${JSON.stringify(config.feeds.map((f) => f.name))}`);
+  if (config.scheduler?.cron) {
+    log.info(`Cron Schedule: ${config.scheduler.cron}`);
+  }
+  log.info(`====================`);
 
   const _results = await Promise.allSettled(
     config.feeds.map(async (feed) => {

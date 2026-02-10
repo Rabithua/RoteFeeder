@@ -1,5 +1,5 @@
 import { assertEquals } from "jsr:@std/assert";
-import { fetchFeed } from "./src/core/rss.ts";
+import { fetchFeed } from "../src/core/rss.ts";
 
 Deno.test("fetchFeed should parsing RSS", async () => {
   // We can mock fetch slightly or given we are in a verification phase,

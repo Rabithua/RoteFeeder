@@ -54,11 +54,9 @@ export async function pushToRote(
     type: "rote",
     ...(config.state !== undefined && {
       state:
-        config.state === "public"
-          ? 1
-          : config.state === "private"
-            ? 0
-            : config.state,
+        config.state === "public" || config.state === "private"
+          ? config.state
+          : String(config.state), // 确保其他值都是字符串类型
     }),
   };
 

@@ -1,7 +1,33 @@
 services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
+
+    # 配置方式一：使用 config.yaml 文件（推荐，更易维护）
+    # volumes:
+    #   - ./config.yaml:/app/config.yaml
+    #   - ./denokv:/app/denokv
+
+    # 配置方式二：使用 Docker Compose 环境变量（适合简单配置）
+    # 使用 YAML 原生语法配置环境变量
+    environment:
+      ROTE_API_BASE: "https://api.rote.ink"
+      ROTE_OPENKEY: "your_openkey_here"
+      ROTE_STATE: "public"
+      ROTE_APPEND_SOURCE_TAG: "true"
+      ROTE_DEFAULT_TAGS: >-
+        - RoteFeeder
+        - RSS
+      ROTE_FEEDS: >-
+        - name: "Hacker News"
+          url: "https://hnrss.org/newest?points=100"
+        - name: "Design Fragments"
+          url: "https://df.fenx.work/rss/all"
+        - name: "Fatbobman's Blog"
+          url: "https://fatbobman.com/rss.xml"
+        - name: "月球背面"
+          url: "https://moonvy.com/blog/rss.xml"
+      ROTE_CRON: "*/10 * * * *"
+
     volumes:
-      - ./config.yaml:/app/config.yaml
       - ./denokv:/app/denokv
     restart: unless-stopped
