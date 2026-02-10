@@ -1,7 +1,7 @@
 <p align="right"><a href="README.md">English</a> | 中文</p>
 
 <p align="left">
-  <img src="assets/RoteFeeder_logo.svg" alt="RoteFeeder Logo" width="200">
+  <img src="assets/RoteFeeder_logo.svg" alt="RoteFeeder Logo" width="400">
 </p>
 
 一个基于 Deno 的服务，定期获取 RSS 订阅源并通过 OpenKey 接口转发到 Rote。

@@ -1,7 +1,7 @@
 <p align="right">English | <a href="README.zh.md">中文</a></p>
 
 <p align="left">
-  <img src="assets/RoteFeeder_logo.svg" alt="RoteFeeder Logo" width="200">
+  <img src="assets/RoteFeeder_logo.svg" alt="RoteFeeder Logo" width="400">
 </p>
 
 A Deno-based service that periodically fetches RSS feeds and forwards them to Rote via the OpenKey interface.
