@@ -1,6 +1,8 @@
 <p align="right"><a href="README.md">English</a> | 中文</p>
 
-# RoteFeeder
+<p align="left">
+  <img src="assets/RoteFeeder_logo.svg" alt="RoteFeeder Logo" width="200">
+</p>
 
 一个基于 Deno 的服务，定期获取 RSS 订阅源并通过 OpenKey 接口转发到 Rote。
 
@@ -22,7 +24,7 @@ RoteFeeder 支持两种配置方式：
 支持使用 Docker Compose 的环境变量进行配置。以下是可用的环境变量：
 
 | 环境变量               | 说明                             | 默认值                |
-|------------------------|----------------------------------|-----------------------|
+| ---------------------- | -------------------------------- | --------------------- |
 | ROTE_API_BASE          | Rote API 基础 URL                | -                     |
 | ROTE_OPENKEY           | Rote OpenKey                     | -                     |
 | ROTE_STATE             | 笔记状态 ("public" 或 "private") | "public"              |
