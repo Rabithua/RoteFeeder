@@ -1,3 +1,13 @@
+// Ensure denokv directory exists before opening database
+try {
+  await Deno.mkdir("./denokv", { recursive: true });
+} catch (e) {
+  if (!(e instanceof Deno.errors.AlreadyExists)) {
+    console.error("Failed to create denokv directory:", e);
+    throw e;
+  }
+}
+
 const kv = await Deno.openKv("./denokv/dedupe.db");
 
 export async function isSeen(guid: string): Promise<boolean> {
