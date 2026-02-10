@@ -4,13 +4,13 @@ import type { AppConfig } from "./types.ts";
 export async function loadConfig(
   path: string = "config.yaml",
 ): Promise<AppConfig> {
-  // 首先尝试从环境变量加载配置
+  // First try to load config from environment variables
   const envConfig = loadFromEnv();
   if (envConfig) {
     return envConfig;
   }
 
-  // 环境变量配置不完整时，尝试从配置文件加载
+  // If environment variable config is incomplete, try to load from config file
   try {
     const text = await Deno.readTextFile(path);
     const config = parseYaml(text) as AppConfig;
@@ -41,7 +41,7 @@ function loadFromEnv(): AppConfig | null {
   const openkey = Deno.env.get("ROTE_OPENKEY");
   const feedsStr = Deno.env.get("ROTE_FEEDS");
 
-  // 检查关键配置项是否存在
+  // Check if key configuration items exist
   if (!apiBase || !openkey || !feedsStr) {
     return null;
   }

@@ -56,7 +56,7 @@ export async function pushToRote(
       state:
         config.state === "public" || config.state === "private"
           ? config.state
-          : String(config.state), // 确保其他值都是字符串类型
+          : String(config.state), // Ensure other values are string types
     }),
   };
 
