@@ -47,7 +47,7 @@ function loadFromEnv(): AppConfig | null {
   }
 
   try {
-    // 尝试解析配置值，先尝试 JSON，再尝试 YAML
+    // Try to parse config values, first try JSON, then YAML
     const parseValue = (value: string) => {
       try {
         return JSON.parse(value);
@@ -90,7 +90,7 @@ function loadFromEnv(): AppConfig | null {
       config.scheduler = { cron };
     }
 
-    // 验证配置
+    // Validate config
     if (!Array.isArray(config.feeds) || config.feeds.length === 0) {
       return null;
     }

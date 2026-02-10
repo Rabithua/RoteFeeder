@@ -2,13 +2,13 @@ services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
 
-    # 配置方式一：使用 config.yaml 文件（推荐，更易维护）
+    # Configuration Method 1: Use config.yaml file (Recommended, easier to maintain)
     # volumes:
     #   - ./config.yaml:/app/config.yaml
     #   - ./denokv:/app/denokv
 
-    # 配置方式二：使用 Docker Compose 环境变量（适合简单配置）
-    # 使用 YAML 原生语法配置环境变量
+    # Configuration Method 2: Use Docker Compose environment variables (Suitable for simple configurations)
+    # Use YAML native syntax for environment variables
     environment:
       ROTE_API_BASE: "https://api.rote.ink"
       ROTE_OPENKEY: "your_openkey_here"
