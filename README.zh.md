@@ -41,6 +41,7 @@ RoteFeeder 支持两种配置方式：
 services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
+    user: "0:0"
     environment:
       ROTE_API_BASE: "https://api.rote.ink"
       ROTE_OPENKEY: "your_openkey_here"
@@ -62,8 +63,11 @@ services:
           url: "https://moonvy.com/blog/rss.xml"
       ROTE_CRON: "*/10 * * * *"
     volumes:
-      - ./denokv:/app/denokv
+      - denokv:/app/denokv
     restart: unless-stopped
+
+volumes:
+  denokv:
 ```
 
 #### 方式二：配置文件
@@ -97,7 +101,9 @@ deno task dev
 
 1.  **配置**:
     确保项目根目录存在 `config.yaml` 并包含您的配置。
-    数据库将持久化存储在 `./denokv` 目录中。
+    数据库默认持久化在 Docker named volume `denokv` 中。
+    Compose 默认以 root 运行容器（`user: "0:0"`），确保首次挂载新卷时 `Deno.openKv("./denokv/dedupe.db")` 能初始化。
+    如果你移除 `user: "0:0"` 并改为 `deno` 用户运行，请确保宿主机目录对容器用户 `1000:1000` 可写。
 
 2.  **使用 Docker Compose 运行**:
 

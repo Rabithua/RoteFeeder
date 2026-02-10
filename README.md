@@ -41,6 +41,7 @@ Example (Docker Compose - YAML Native Syntax):
 services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
+    user: "0:0"
     environment:
       ROTE_API_BASE: "https://api.rote.ink"
       ROTE_OPENKEY: "your_openkey_here"
@@ -62,8 +63,11 @@ services:
           url: "https://moonvy.com/blog/rss.xml"
       ROTE_CRON: "*/10 * * * *"
     volumes:
-      - ./denokv:/app/denokv
+      - denokv:/app/denokv
     restart: unless-stopped
+
+volumes:
+  denokv:
 ```
 
 #### Method 2: Configuration File
@@ -97,7 +101,9 @@ deno task dev
 
 1.  **Configure**:
     Ensure `config.yaml` is present in the project root with your desired configuration.
-    The database will be persisted in the `./denokv` directory.
+    The database is persisted in a Docker named volume `denokv` by default.
+    Compose runs the container as root (`user: "0:0"`) so `Deno.openKv("./denokv/dedupe.db")` can always initialize on fresh volumes.
+    If you remove `user: "0:0"` and run as `deno` user, ensure the host directory is writable by container user `1000:1000`.
 
 2.  **Run with Docker Compose**:
 

@@ -2,11 +2,12 @@ services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
     pull_policy: always
+    user: "0:0"
 
     # Configuration Method 1: Use config.yaml file (Recommended, easier to maintain)
     # volumes:
     #   - ./config.yaml:/app/config.yaml
-    #   - ./denokv:/app/denokv
+    #   - denokv:/app/denokv
 
     # Configuration Method 2: Use Docker Compose environment variables (Suitable for simple configurations)
     # Use YAML native syntax for environment variables
@@ -30,5 +31,8 @@ services:
       ROTE_CRON: "*/10 * * * *"
 
     volumes:
-      - ./denokv:/app/denokv
+      - denokv:/app/denokv
     restart: unless-stopped
+
+volumes:
+  denokv:

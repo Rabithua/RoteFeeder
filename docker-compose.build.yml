@@ -1,7 +1,11 @@
 services:
   rote-feeder:
     build: .
+    user: "0:0"
     volumes:
       - ./config.yaml:/app/config.yaml
-      - ./denokv:/app/denokv
+      - denokv:/app/denokv
     restart: unless-stopped
+
+volumes:
+  denokv:
