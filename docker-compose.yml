@@ -1,6 +1,7 @@
 services:
   rote-feeder:
     image: ghcr.io/rabithua/rotefeeder:latest
+    pull_policy: always
 
     # Configuration Method 1: Use config.yaml file (Recommended, easier to maintain)
     # volumes:
